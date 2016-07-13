@@ -1,0 +1,14 @@
+	
+	private LinkedList<Node> buildNewBFS(Node root) {
+		
+		LinkedList<Node> nodes = new LinkedList<Node>();
+		LinkedList<Node> result = new LinkedList<Node>();
+		nodes.addLast(root);
+		while(!nodes.isEmpty()){
+			Node r = nodes.pollFirst();
+			result.addLast(r);
+			if(r.getLeft() != null) nodes.addLast(r.getLeft());
+			if(r.getRight() != null) nodes.addLast(r.getRight());
+		}
+		return result;
+	}
