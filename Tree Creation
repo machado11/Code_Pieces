@@ -1,0 +1,30 @@
+	private static int buildTree(int[] values){
+		for (int i : values) {
+			Node n = new Node(i);
+			System.out.println("Insert new node: " + n.get());
+			insertNode(rootTree, n);
+		}
+		return 0;
+	}
+
+	private static void insertNode(Node current, Node n) {
+		// TODO Auto-generated method stub
+		if(rootTree == null){ 
+			rootTree = n;
+			
+		}else if (n.get() > current.get()){ //Left side of the tree gets the bigger numbers
+			if (current.getLeft() == null){ 
+				current.setLeft(n);
+				
+			}else{ 
+				insertNode(current.getLeft(), n);
+			
+			}
+		}else if(current.getRight() == null){
+			current.setRight(n);
+			
+		}else{ 
+			insertNode(current.getRight(), n);
+			
+		}
+	}
