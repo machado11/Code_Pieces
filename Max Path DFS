@@ -1,0 +1,18 @@
+	public LinkedList<Node> findMaxPath(Node n){
+		LinkedList<Node> sum = new LinkedList<Node>();
+		if(n == null) return sum;
+		
+		LinkedList<Node> left = null;
+		LinkedList<Node> right = null;
+		
+		Node next = n.getLeft();
+		left = findMaxPath(next);
+		left.addFirst(n);
+		next = n.getRight();
+		right = findMaxPath(next);
+		right.addFirst(n);
+		if(left.size() >= right.size())
+			sum.addAll(left); 
+		else sum.addAll(right);
+		return sum;
+	}
